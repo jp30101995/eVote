@@ -72,6 +72,7 @@ export default {
 
       console.log(apiResponse);
       this.registerReponse = apiResponse;
+      console.log(apiResponse);
       await this.hideSpinner();
     },
 
