@@ -31,8 +31,6 @@ jobs:
         node-versions: [8.x]
     name: Second Build
     steps:
-      - name: Cache
-        uses: actions/cache@master
       - uses: actions/checkout@master
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@master
@@ -60,4 +58,6 @@ jobs:
         if: success()
         run:
           echo success $VAR3 $VAR4 $VAR1 $VAR2
+      - name: Cache
+        uses: actions/cache@master
    
