@@ -7,24 +7,21 @@ on:
 
 jobs:
   first-basic-build:
-    strategy:
-      matrix:
-        node-versions: [8.x, 10.x, 12.x]
     runs-on: [ubuntu-latest]
-    name: Node build
+    name: first step build
     steps:
       - name: first step for the first build
         env:
           VAR1: variable 1
           VAR2: variable 2
         run:
-          echo step 1 $VAR1 $VAR2 ${{ matrix.node-version }}
+          echo step 1 ${env:VAR1} ${env:VAR2} ${{ matrix.node-version }}
       - name: second step for the first build
         env:
           VAR3: variable 3
           VAR4: variable 4
         run:
-          echo $VAR3 $VAR4 $VAR1 $VAR2 
+          echo ${env:VAR1} ${env:VAR2} ${env:VAR3} ${env:VAR4}
                     
   Second-basic-build:
     runs-on: [ubuntu-latest]
@@ -34,6 +31,8 @@ jobs:
         node-versions: [8.x]
     name: Second Build
     steps:
+      - name: Cache
+        uses: actions/cache@master
       - uses: actions/checkout@master
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@master
