@@ -27,9 +27,9 @@ FROM node:lts-alpine as build-stage
 WORKDIR /app
 COPY package*.json ./
 RUN npm install --production
-RUN npm install @vue/cli@3.7.0 -g
 COPY . .
 RUN npm run build
+RUN npm install @vue/cli@3.7.0 -g
 # production stage
 FROM nginx:stable-alpine as production-stage
 COPY --from=build-stage /app/dist /usr/share/nginx/html
