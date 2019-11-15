@@ -1,5 +1,7 @@
 <template>
-  <div id="app">
+<div class="container">
+  <div id="app" >
+    <div align="center">
     <img alt="Vue logo" src="./assets/logo.png">    
       
         <p><router-link to="/">Home</router-link>&nbsp;          
@@ -8,8 +10,10 @@
         <router-link to="/queryWithQueryString">Query by Type</router-link>&nbsp;
         <router-link to="/queryByKey">Query by Key</router-link>&nbsp;
         <router-link to="/getCurrentStanding">Get Poll Standings</router-link>&nbsp;
+    </div>
       
       <router-view></router-view>
+    </div>
     </div>
 </template>
 
@@ -21,14 +25,14 @@ export default {
 </script>
 
 <style>
-#app {
+/* #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
+} */
 .chart-wrapper {
   width: 100%;
   height: 700px;
