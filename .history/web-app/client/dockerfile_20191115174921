@@ -27,7 +27,7 @@ FROM node:lts-alpine as build-stage
 WORKDIR /app
 COPY package*.json ./
 RUN rm -rf node_modules
-# RUN export PATH="$(yarn global bin):$PATH"
+RUN export PATH="$(yarn global bin):$PATH"
 
 RUN npm install --production
 RUN npm install @vue/cli@3.7.0 -g
