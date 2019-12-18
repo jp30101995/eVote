@@ -143,9 +143,7 @@ export default {
         this.registerData.voterId,
         this.registerData.registrarId,
         this.registerData.firstName,
-        this.registerData.lastName,
-        this.registerData.pnumber,
-        this.registerData.email
+        this.registerData.lastName
       );
 
       console.log(apiResponse);

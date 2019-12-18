@@ -47,8 +47,8 @@ class MyAssetContract extends Contract {
     let election;
 
     //create voters
-    let voter1 = await new Voter('V1', '234', 'Horea', 'Porutiu', '7048150952', 'jp30@gmail.com');
-    let voter2 = await new Voter('V2', '345', 'Duncan', 'Conley', '7048150953', 'jp30@gmail.in');
+    let voter1 = await new Voter('V1', '234', 'Horea', 'Porutiu');
+    let voter2 = await new Voter('V2', '345', 'Duncan', 'Conley');
 
     //update voters array
     voters.push(voter1);

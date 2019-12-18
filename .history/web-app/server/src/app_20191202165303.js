@@ -80,7 +80,7 @@ app.post('/registerVoter', async (req, res) => {
   let voterId = req.body.voterId;
 
   //first create the identity for the voter and add to wallet
-  let response = await network.registerVoter(voterId, req.body.registrarId, req.body.firstName, req.body.lastName. req.body.pnumber, req.body.email);
+  let response = await network.registerVoter(voterId, req.body.registrarId, req.body.firstName, req.body.lastName);
   console.log('response from registerVoter: ');
   console.log(response);
   if (response.error) {

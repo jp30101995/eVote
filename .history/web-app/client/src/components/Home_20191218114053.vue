@@ -45,21 +45,21 @@
             ></b-form-input>
             </b-form-group>
 
-            <b-form-group id="input-group-2" label="Phone number" label-for="input-2">
+            <b-form-group id="input-group-2" label="Last name" label-for="input-2">
             <b-form-input
               id="input-2"
-              v-model="registerData.pnumber"
+              v-model="registerData.lastName"
               required
-              placeholder="Enter Phone number"
+              placeholder="Enter Last name"
             ></b-form-input>
             </b-form-group>
 
-            <b-form-group id="input-group-2" label="email" label-for="input-2">
+            <b-form-group id="input-group-2" label="Last name" label-for="input-2">
             <b-form-input
               id="input-2"
-              v-model="registerData.email"
+              v-model="registerData.lastName"
               required
-              placeholder="Enter Email"
+              placeholder="Enter Last name"
             ></b-form-input>
             </b-form-group>
 
@@ -143,9 +143,7 @@ export default {
         this.registerData.voterId,
         this.registerData.registrarId,
         this.registerData.firstName,
-        this.registerData.lastName,
-        this.registerData.pnumber,
-        this.registerData.email
+        this.registerData.lastName
       );
 
       console.log(apiResponse);

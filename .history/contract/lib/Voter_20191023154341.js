@@ -13,7 +13,7 @@ class Voter {
    * @param voterId - the unique Id which corresponds to a registered voter
    * @returns - registrar object
    */
-  constructor(voterId, registrarId, firstName, lastName, phone, email) {
+  constructor(voterId, registrarId, firstName, lastName) {
 
     if (this.validateVoter(voterId) && this.validateRegistrar(registrarId)) {
 
@@ -21,8 +21,6 @@ class Voter {
       this.registrarId = registrarId;
       this.firstName = firstName;
       this.lastName = lastName;
-      this.phoneNumber = phone;
-      this.email = email;
       this.ballotCreated = false;
       this.type = 'voter';
       if (this.__isContract) {
@@ -52,7 +50,7 @@ class Voter {
    */
   async validateVoter(voterId) {
     //VoterId error checking here, i.e. check if valid drivers License, or state ID
-    if (voterId.length == 10) {
+    if (voterId) {
       return true;
     } else {
       return false;
@@ -71,7 +69,7 @@ class Voter {
   async validateRegistrar(registrarId) {
 
     //registrarId error checking here, i.e. check if valid drivers License, or state ID
-    if (registrarId.length == 16) {
+    if (registrarId) {
       return true;
     } else {
       return false;

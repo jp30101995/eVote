@@ -1,19 +1,17 @@
 <template>
-  <div class="container">
-    <div class="posts">
-      <h1>Get the Current Poll Standings</h1>
+  <div class="posts">
+    <h1>Get the Current Poll Standings</h1>
 
-      <button v-on:click="getCurrentStanding()">Check Poll</button>
+    <button v-on:click="getCurrentStanding()">Check Poll</button>
 
-      <br />
-      <span v-if="response">
-        <b>{{ response }}</b>
-      </span>
-      <br />
-      <vue-instant-loading-spinner id="loader" ref="Spinner"></vue-instant-loading-spinner>
-      <div class="chart-wrapper">
-        <chart :options="chartOptionsBar"></chart>
-      </div>
+    <br>
+    <span v-if="response">
+      <b>{{ response }}</b>
+    </span>
+    <br>
+    <vue-instant-loading-spinner id='loader' ref="Spinner"></vue-instant-loading-spinner>
+    <div class="chart-wrapper">
+      <chart :options="chartOptionsBar"></chart>
     </div>
   </div>
 </template>
@@ -38,7 +36,7 @@ export default {
   methods: {
     async getCurrentStanding() {
       this.response = null;
-
+      
       this.runSpinner();
 
       // console.log(`this.selected ${this.selected}`);

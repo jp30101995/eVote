@@ -123,7 +123,7 @@ describe('MyAssetContract', () => {
   describe('#Voter', async () => {
 
     it('Voter object should be created successfully, with all correct properties', async () => {
-      let voter = new Voter('1', '234', 'Horea', 'Porutiu', '7048153952', 'jp30@gmrail.com'); 
+      let voter = new Voter('1', '234', 'Horea', 'Porutiu'); 
       voter.should.haveOwnProperty('name');
       voter.should.haveOwnProperty('voterId');
       voter.should.haveOwnProperty('firstName');
