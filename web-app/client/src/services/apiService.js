@@ -19,13 +19,14 @@ export default {
       selected: selected
     }) 
   },
-  registerVoter(voterId, registrarId, firstName, lastName) {
+  registerVoter(voterId, registrarId, firstName, lastName, pnumber, email) {
     return Api().post('registerVoter', {
       voterId: voterId,
       registrarId: registrarId,
       firstName: firstName,
       lastName: lastName,
-      
+      phone: pnumber,
+      email: email
     }) 
   },
   validateVoter(voterId) {

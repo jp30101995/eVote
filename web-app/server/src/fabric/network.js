@@ -158,7 +158,7 @@ exports.invoke = async function (networkObj, isQuery, func, args) {
   }
 };
 
-exports.registerVoter = async function (voterId, registrarId, firstName, lastName) {
+exports.registerVoter = async function (voterId, registrarId, firstName, lastName, pnumber, email) {
 
   console.log('registrarId');
   console.log(registrarId);
@@ -166,7 +166,7 @@ exports.registerVoter = async function (voterId, registrarId, firstName, lastNam
   console.log('voterId ');
   console.log(voterId);
 
-  if (!registrarId || !voterId || !firstName || !lastName) {
+  if (!registrarId || !voterId || !firstName || !lastName || !pnumber || !email) {
     let response = {};
     response.error = 'Error! You need to fill all fields before you can register!';
     return response;
