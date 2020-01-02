@@ -158,7 +158,7 @@ export default {
         .then(response => response.json())
         .then(data => {
           var identity = data.input.Items[0];
-          if(identity.firstname == this.registerData.firstName && identity.dlno == this.registerData.voterId){
+          if(identity != undefined && identity.firstname == this.registerData.firstName && identity.dlno == this.registerData.voterId){
             console.log(apiResponse);
             this.registerReponse = apiResponse;
             console.log(apiResponse);
