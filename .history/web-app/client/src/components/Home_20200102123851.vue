@@ -156,7 +156,7 @@ export default {
 
     async validateVoter() {
       await this.runSpinner();
-      
+
       if (!this.loginData.voterId) {
         console.log("!thislogin");
         let response = 'Please enter a VoterId';
@@ -175,7 +175,7 @@ export default {
           console.log(apiResponse.data.error);
           this.loginReponse = apiResponse.data.error;
         } else {
-          this.$router.push({name: "CastBallot", params: apiResponse});
+          this.$router.push("castBallot");
         }
 
         console.log(apiResponse);

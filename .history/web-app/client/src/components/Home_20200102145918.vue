@@ -175,7 +175,8 @@ export default {
           console.log(apiResponse.data.error);
           this.loginReponse = apiResponse.data.error;
         } else {
-          this.$router.push({name: "CastBallot", params: apiResponse});
+
+          this.$router.push({name: "castBallot", params: apiResponse});
         }
 
         console.log(apiResponse);

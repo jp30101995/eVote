@@ -156,33 +156,34 @@ export default {
 
     async validateVoter() {
       await this.runSpinner();
-      
-      if (!this.loginData.voterId) {
-        console.log("!thislogin");
-        let response = 'Please enter a VoterId';
-        this.loginReponse.data = response;
-        await this.hideSpinner();
-      } else {
-        var actId = this.loginData.voterId.substring(0,2) + this.loginData.voterId.substring(6,8) + this.loginData.voterId.substring(12,16) + this.loginData.voterId.substring(20,24) 
-        const apiResponse = await PostsService.validateVoter(
-          actId
-        );
-        console.log("apiResponse");
-        console.log(apiResponse.data);
+      this.$router.push({name: "CastBallot", params: {id: 1}});
+      // if (!this.loginData.voterId) {
+      //   console.log("!thislogin");
+      //   let response = 'Please enter a VoterId';
+      //   this.loginReponse.data = response;
+      //   await this.hideSpinner();
+      // } else {
+      //   var actId = this.loginData.voterId.substring(0,2) + this.loginData.voterId.substring(6,8) + this.loginData.voterId.substring(12,16) + this.loginData.voterId.substring(20,24) 
+      //   const apiResponse = await PostsService.validateVoter(
+      //     actId
+      //   );
+      //   console.log("apiResponse");
+      //   console.log(apiResponse.data);
 
-        if (apiResponse.data.error) {
-          // console.log(apiResponse);
-          console.log(apiResponse.data.error);
-          this.loginReponse = apiResponse.data.error;
-        } else {
-          this.$router.push({name: "CastBallot", params: apiResponse});
-        }
+      //   if (apiResponse.data.error) {
+      //     // console.log(apiResponse);
+      //     console.log(apiResponse.data.error);
+      //     this.loginReponse = apiResponse.data.error;
+      //   } else {
 
-        console.log(apiResponse);
-        this.loginReponse = apiResponse;
-        // this.$router.push('castBallot')
-        await this.hideSpinner();
-      }
+      //     this.$router.push({name: "castBallot", params: {id: 1}});
+      //   }
+
+      //   console.log(apiResponse);
+      //   this.loginReponse = apiResponse;
+      //   // this.$router.push('castBallot')
+      //   await this.hideSpinner();
+      // }
     },
     async runSpinner() {
       this.$refs.Spinner.show();

@@ -45,6 +45,24 @@
             ></b-form-input>
             </b-form-group>
 
+            <b-form-group id="input-group-2" label="Phone number" label-for="input-2">
+            <b-form-input
+              id="input-2"
+              v-model="registerData.pnumber"
+              required
+              placeholder="Enter Phone number"
+            ></b-form-input>
+            </b-form-group>
+
+            <b-form-group id="input-group-2" label="email" label-for="input-2">
+            <b-form-input
+              id="input-2"
+              v-model="registerData.email"
+              required
+              placeholder="Enter Email"
+            ></b-form-input>
+            </b-form-group>
+
           <!-- <div class="row">
             <div class="col-md-6">
               <input type="text" v-model="registerData.voterId" placeholder="Enter Drivers License">
@@ -125,7 +143,9 @@ export default {
         this.registerData.voterId,
         this.registerData.registrarId,
         this.registerData.firstName,
-        this.registerData.lastName
+        this.registerData.lastName,
+        this.registerData.pnumber,
+        this.registerData.email
       );
 
       console.log(apiResponse);
@@ -136,15 +156,16 @@ export default {
 
     async validateVoter() {
       await this.runSpinner();
-
+      
       if (!this.loginData.voterId) {
         console.log("!thislogin");
         let response = 'Please enter a VoterId';
         this.loginReponse.data = response;
         await this.hideSpinner();
       } else {
+        var actId = this.loginData.voterId.substring(0,2) + this.loginData.voterId.substring(6,8) + this.loginData.voterId.substring(12,16) + this.loginData.voterId.substring(20,24) 
         const apiResponse = await PostsService.validateVoter(
-          this.loginData.voterId
+          actId
         );
         console.log("apiResponse");
         console.log(apiResponse.data);
@@ -154,7 +175,8 @@ export default {
           console.log(apiResponse.data.error);
           this.loginReponse = apiResponse.data.error;
         } else {
-          this.$router.push("castBallot");
+
+          this.$router.push({name: "castBallot", params: apiResponse.data});
         }
 
         console.log(apiResponse);

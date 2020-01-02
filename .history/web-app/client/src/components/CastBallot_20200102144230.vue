@@ -1,12 +1,20 @@
 <template>
   <div class="posts">
     <div class="row">
-      <label for="one">{{ input.name }}</label>
+      <label for="one">Donald Trump (Republican)</label>
     </div>
     <div class="row">
-      <label for="one">{{ input.voterID }}</label>
+      <label for="one">Donald Trump (Republican)</label>
     </div>
-
+    <div class="row">
+      <label for="one">Donald Trump (Republican)</label>
+    </div>
+    <div class="row">
+      <label for="one">Donald Trump (Republican)</label>
+    </div>
+    <div class="row">
+      <label for="one">Donald Trump (Republican)</label>
+    </div>
     <hr />
     <h1>Cast Ballot</h1>
     <input type="radio" id="one" value="Republican" v-model="picked" />
@@ -68,10 +76,7 @@ export default {
   },
   created: function() {
     console.log("id printing");
-    console.log(this.$route.params.data);
-    var userInfo = this.$route.params.data;
-    input.name = "Name: " + userInfo.firstName + " " + userInfo.lastName
-    input.voterID = "Voter ID: " + userInfo.voterId  
+    console.log(this.$route.params.id);
   },
   methods: {
     async castBallot() {
