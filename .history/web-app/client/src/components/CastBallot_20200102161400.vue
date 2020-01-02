@@ -35,7 +35,7 @@
     <form v-on:submit="castBallot">
       <!-- <input type="text" value="2sww593dc034wb2twdk91r" v-model="input.electionId"  >
       <br>-->
-      <input type="text" v-model="input.voterId" placeholder="Enter VoterId" disabled/>
+      <input type="text" v-model="input.voterId" placeholder="Enter VoterId" />
       <br />
       <input type="submit" value="Cast Vote" />
       <br />
