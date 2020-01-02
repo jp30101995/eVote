@@ -9,21 +9,21 @@
       <div class="col-md-6">
         <h3>Sign Up!!</h3>
         <form v-on:submit="registerVoter">
-          <b-form-group id="input-group-2" label="Drivers License" label-for="input-2">
+          <b-form-group id="input-group-2" label="Election Card ID" label-for="input-2">
             <b-form-input
               id="input-2"
               v-model="registerData.voterId"
               required
-              placeholder="Enter Drivers License"
+              placeholder="Enter Election Card ID"
             ></b-form-input>
             </b-form-group>
 
-            <b-form-group id="input-group-2" label="Election Card ID" label-for="input-2">
+            <b-form-group id="input-group-2" label="Adhar number" label-for="input-2">
             <b-form-input
               id="input-2"
               v-model="registerData.registrarId"
               required
-              placeholder="Enter Election Card ID"
+              placeholder="Enter Adhar number"
             ></b-form-input>
             </b-form-group>
 
