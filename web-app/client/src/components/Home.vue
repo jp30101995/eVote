@@ -139,6 +139,7 @@ export default {
     async registerVoter() {
 
       await this.runSpinner();
+
       const apiResponse = await PostsService.registerVoter(
         this.registerData.voterId,
         this.registerData.registrarId,
@@ -147,10 +148,27 @@ export default {
         this.registerData.pnumber,
         this.registerData.email
       );
+      const proxyurl = "https://cors-anywhere.herokuapp.com/";
+      fetch(proxyurl + 'https://132ogl10qa.execute-api.ap-southeast-1.amazonaws.com/Stage/voter?aadhar='+this.registerData.registrarId, {
+        headers: {
+          'Accept': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+          var identity = data.input.Items[0];
+          if(identity.firstname == this.registerData.firstName && identity.dlno == this.registerData.voterId){
+            console.log(apiResponse);
+            this.registerReponse = apiResponse;
+            console.log(apiResponse);
+          }else{
+            this.registerReponse = 'Provided input details are not correct. Please check it and then try again.';
+          }
+          console.log(data)
+        })
+        .catch(err => console.log(err))
 
-      console.log(apiResponse);
-      this.registerReponse = apiResponse;
-      console.log(apiResponse);
       await this.hideSpinner();
     },
 
