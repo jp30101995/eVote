@@ -4,7 +4,7 @@
       <label for="one">{{ input.name }}</label>
     </div>
     <div class="row">
-      <label for="one">{{ input.voterId }}</label>
+      <label for="one">{{ input.voterID }}</label>
     </div>
 
     <hr />
@@ -71,7 +71,7 @@ export default {
     console.log(this.$route.params.data);
     var userInfo = this.$route.params.data;
     this.input.name = "Name: " + userInfo.firstName + " " + userInfo.lastName
-    this.input.voterId = "Voter ID: " + userInfo.voterId  
+    this.input.voterID = "Voter ID: " + userInfo.voterId  
   },
   methods: {
     async castBallot() {
