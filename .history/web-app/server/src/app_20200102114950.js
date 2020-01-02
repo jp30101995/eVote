@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const util = require('util');
 const path = require('path');
 const fs = require('fs');
-
+const nodemailer = require('nodemailer');
 let network = require('./fabric/network.js');
 
 const app = express();
@@ -80,7 +80,7 @@ app.post('/registerVoter', async (req, res) => {
   let voterId = req.body.voterId;
 
   //first create the identity for the voter and add to wallet
-  let response = await network.registerVoter(voterId, req.body.registrarId, req.body.firstName, req.body.lastName);
+  let response = await network.registerVoter(voterId, req.body.registrarId, req.body.firstName, req.body.lastName, req.body.phone, req.body.email);
   console.log('response from registerVoter: ');
   console.log(response);
   if (response.error) {
@@ -111,7 +111,10 @@ app.post('/registerVoter', async (req, res) => {
 
       console.log('after network.invoke ');
       let parsedResponse = JSON.parse(invokeResponse);
-      parsedResponse += '. Use voterId to login above.';
+      parsedResponse += '. Use voterId to login above. It is sent on your email';
+
+
+
       res.send(parsedResponse);
 
     }

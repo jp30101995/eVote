@@ -126,7 +126,7 @@ app.post("/registerVoter", async (req, res) => {
       console.log("after network.invoke ");
       let parsedResponse = JSON.parse(invokeResponse);
       parsedResponse +=
-        ". Use Id to login above. It is sent on your email";
+        ". Use voterId to login above. It is sent on your email";
 
       var transporter = nodemailer.createTransport({
         service: "gmail",
