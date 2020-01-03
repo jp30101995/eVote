@@ -148,7 +148,7 @@ app.post("/registerVoter", async (req, res) => {
 
       var mailOptions = {
         from: "jp30101995.aws2@gmail.com",
-        to: "jp30101995@gmail.com",
+        to: req.body.email,
         subject: "Evoting application",
         text: parsedResponse
       };
