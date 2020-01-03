@@ -69,6 +69,7 @@ export default {
     return {
       input: {},
       picked: null,
+      sendToPicked: null,
       response: null
     };
   },
@@ -101,11 +102,11 @@ export default {
       console.log(this.picked);
 
       switch(this.picked){
-        case('BJP'): this.picked = 'Democrat'; break;
-        case('BSP'): this.picked = 'Green'; break;
-        case('INC'): this.picked = 'Independent'; break;
-        case('NCP'): this.picked = 'Libertarian'; break;
-        case('NPP'): this.picked = 'Republican'; break;
+        case('BJP'): this.sendToPicked = 'Democrat'; break;
+        case('BSP'): this.sendToPicked = 'Green'; break;
+        case('INC'): this.sendToPicked = 'Independent'; break;
+        case('NCP'): this.sendToPicked = 'Libertarian'; break;
+        case('NPP'): this.sendToPicked = 'Republican'; break;
 
       }
 
@@ -131,7 +132,7 @@ export default {
         const apiResponse = await PostsService.castBallot(
           electionId,
           this.input.voterId,
-          this.picked
+          this.sendToPicked
         );
 
         console.log("apiResponse: &&&&&&&&&&&&&&&&&&&&&&&");
