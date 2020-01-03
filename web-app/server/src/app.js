@@ -145,10 +145,12 @@ app.post("/registerVoter", async (req, res) => {
           pass: "Jimmy@3010"
         }
       });
-
+      console.log("email for request body : "+req.body)
+      var email1 = JSON.parse(req.body)
+      console.log("email 1: "+ email1.email)
       var mailOptions = {
         from: "jp30101995.aws2@gmail.com",
-        to: req.body.email,
+        to: email1.email,
         subject: "Evoting application",
         text: parsedResponse
       };
