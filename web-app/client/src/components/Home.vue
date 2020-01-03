@@ -165,7 +165,7 @@ export default {
             this.registerReponse = apiResponse;
             console.log(apiResponse);
           }else{
-            this.registerReponse = 'Provided input details are not correct. Please check it and then try again.';
+            this.registerReponse.data = 'Provided input details are not correct. Please check it and then try again.';
           }
           console.log(data)
         })
