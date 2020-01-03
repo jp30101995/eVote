@@ -6,6 +6,12 @@
     <div class="row">
       <label for="one">{{ input.voterIDlabel }}</label>
     </div>
+    <div class="row">
+      <label for="one">{{ input.email }}</label>
+    </div>
+    <div class="row">
+      <label for="one">{{ input.aadhar }}</label>
+    </div>
 
     <hr />
     <h1>Cast Ballot</h1>
@@ -73,6 +79,12 @@ export default {
     this.input.name = "Name: " + userInfo.firstName + " " + userInfo.lastName
     this.input.voterIDlabel = "Voter ID: " + userInfo.voterId  
     this.input.voterId = userInfo.voterId 
+
+    var regData = JSON.parse(localStorage.getItem("registerData"))
+    this.input.email = "Email: " + regData.email
+    this.input.aadhar = "Aadhar No: " + regData.registrarId
+    this.input.phone = "Phone number: " + regData.pnumber
+
   },
   methods: {
     async castBallot() {

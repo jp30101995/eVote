@@ -48,6 +48,7 @@
             <b-form-group id="input-group-2" label="Phone number" label-for="input-2">
             <b-form-input
               id="input-2"
+              type="number"
               v-model="registerData.pnumber"
               required
               placeholder="Enter Phone number"
@@ -57,6 +58,7 @@
             <b-form-group id="input-group-2" label="email" label-for="input-2">
             <b-form-input
               id="input-2"
+              type=email
               v-model="registerData.email"
               required
               placeholder="Enter Email"
@@ -139,7 +141,7 @@ export default {
     async registerVoter() {
 
       await this.runSpinner();
-
+      localStorage.setItem("registerData", JSON.stringify(this.registerData))
       const apiResponse = await PostsService.registerVoter(
         this.registerData.voterId,
         this.registerData.registrarId,
