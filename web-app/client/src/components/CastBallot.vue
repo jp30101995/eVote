@@ -12,6 +12,9 @@
     <div class="row">
       <label for="one">{{ input.aadhar }}</label>
     </div>
+    <div class="row">
+      <label for="one">{{ input.phone }}</label>
+    </div>
 
     <hr />
     <h1>Cast Ballot</h1>
