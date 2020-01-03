@@ -11,7 +11,7 @@
       </span>
       <br />
       <vue-instant-loading-spinner id="loader" ref="Spinner"></vue-instant-loading-spinner>
-      <div class="chart-wrapper">
+      <div class="chart-wrapper" style="overflow: auto !important;height: 250px !important;">
         <chart :options="chartOptionsBar"></chart>
       </div>
     </div>
@@ -55,13 +55,7 @@ export default {
 
       this.chartOptionsBar = {
         xAxis: {
-          data: [
-            "BJP",
-            "BSP",
-            "INC",
-            "NCP",
-            "NPP"
-          ]
+          data: ["BJP", "BSP", "INC", "NCP", "NPP"]
         },
         yAxis: {
           type: "value"
