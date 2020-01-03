@@ -99,6 +99,17 @@ export default {
 
       console.log("picked: ");
       console.log(this.picked);
+
+      switch(this.picked){
+        case('BJP'): this.picked = 'Democrat'; break;
+        case('BSP'): this.picked = 'Green'; break;
+        case('INC'): this.picked = 'Independent'; break;
+        case('NCP'): this.picked = 'Libertarian'; break;
+        case('NPP'): this.picked = 'Republican'; break;
+
+      }
+
+
       console.log("voterId: ");
       console.log(this.input.voterId);
       this.response = null;
