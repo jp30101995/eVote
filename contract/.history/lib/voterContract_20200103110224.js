@@ -47,8 +47,8 @@ class MyAssetContract extends Contract {
     let election;
 
     //create voters
-    let voter1 = await new Voter('V1', '234', 'Horea', 'Porutiu');
-    let voter2 = await new Voter('V2', '345', 'Duncan', 'Conley');
+    let voter1 = await new Voter('V1', '234', 'Horea', 'Porutiu', '7048150952', 'jp30@gmail.com');
+    let voter2 = await new Voter('V2', '345', 'Duncan', 'Conley', '7048150953', 'jp30@gmail.in');
 
     //update voters array
     voters.push(voter1);
@@ -81,11 +81,11 @@ class MyAssetContract extends Contract {
     }
 
     //create votableItems for the ballots
-    let repVotable = await new VotableItem(ctx, 'Republican', ballotData.fedDemocratBrief);
-    let demVotable = await new VotableItem(ctx, 'Democrat', ballotData.republicanBrief);
-    let indVotable = await new VotableItem(ctx, 'Green', ballotData.greenBrief);
-    let grnVotable = await new VotableItem(ctx, 'Independent', ballotData.independentBrief);
-    let libVotable = await new VotableItem(ctx, 'Libertarian', ballotData.libertarianBrief);
+    let repVotable = await new VotableItem(ctx, 'BJP', ballotData.fedDemocratBrief);
+    let demVotable = await new VotableItem(ctx, 'BSP', ballotData.republicanBrief);
+    let indVotable = await new VotableItem(ctx, 'INC', ballotData.greenBrief);
+    let grnVotable = await new VotableItem(ctx, 'NCP', ballotData.independentBrief);
+    let libVotable = await new VotableItem(ctx, 'NPP', ballotData.libertarianBrief);
 
     //populate choices array so that the ballots can have all of these choices 
     votableItems.push(repVotable);
@@ -165,8 +165,14 @@ class MyAssetContract extends Contract {
 
     args = JSON.parse(args);
 
+    if(args.voterId.length < 5){
+      let response = {};
+      response.error = 'Invalid voter ID. Please check you voter id and try again.';
+      return response;
+    }
+
     //create a new voter
-    let newVoter = await new Voter(args.voterId, args.registrarId, args.firstName, args.lastName);
+    let newVoter = await new Voter(args.voterId, args.registrarId, args.firstName, args.lastName, args.phone, args.email);
 
     //update state with new voter
     await ctx.stub.putState(newVoter.voterId, Buffer.from(JSON.stringify(newVoter)));
@@ -188,7 +194,10 @@ class MyAssetContract extends Contract {
     //generate ballot with the given votableItems
     await this.generateBallot(ctx, votableItems, currElection, newVoter);
 
-    let response = `voter with voterId ${newVoter.voterId} is updated in the world state`;
+    let response = {};
+    response.message = `voter with voterId ${newVoter.voterId} is updated in the world state`;
+    //response.voterKey = 
+
     return response;
   }
 
@@ -405,6 +414,17 @@ class MyAssetContract extends Contract {
         return JSON.stringify(allResults);
       }
     }
+  }
+
+  
+  async queryByVoterID(ctx, voterId){
+    let queryString = {
+      selector:{
+        voterId: voterId
+      }
+    }
+    let voter = await this.queryWithQueryString(ctx, JSON.stringify(queryString));
+    return voter;
   }
 
   /**
