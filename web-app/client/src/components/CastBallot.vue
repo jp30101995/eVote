@@ -1,39 +1,86 @@
 <template>
   <div class="posts">
     <div class="row">
-      <label for="one">{{ input.name }}</label>
+      <div class="col-md-6">
+        <div class="row">
+          <label for="one">{{ input.name }}</label>
+        </div>
+        <div class="row">
+          <label for="one">{{ input.voterIDlabel }}</label>
+        </div>
+        <div class="row">
+          <label for="one">{{ input.email }}</label>
+        </div>
+        <div class="row">
+          <label for="one">{{ input.aadhar }}</label>
+        </div>
+        <div class="row">
+          <label for="one">{{ input.phone }}</label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <img :src="getImgUrl()" width="500" height="333">
+      </div>
     </div>
-    <div class="row">
-      <label for="one">{{ input.voterIDlabel }}</label>
-    </div>
-    <div class="row">
-      <label for="one">{{ input.email }}</label>
-    </div>
-    <div class="row">
-      <label for="one">{{ input.aadhar }}</label>
-    </div>
-    <div class="row">
-      <label for="one">{{ input.phone }}</label>
-    </div>
-
     <hr />
     <h1>Cast Ballot</h1>
-    <input type="radio" id="one" value="BJP" v-model="picked" />
-    <label for="one">Narendra Modi (BJP)</label>
-    <br />
-    <input type="radio" id="two" value="BSP" v-model="picked" />
-    <label for="two">Mayawati (BSP)</label>
-    <br />
-    <input type="radio" id="three" value="INC" v-model="picked" />
-    <label for="three">Rahul Gandhi (INC)</label>
-    <br />
-    <input type="radio" id="four" value="NCP" v-model="picked" />
-    <label for="four">Sharad Pawar (NCP)</label>
-    <br />
-    <input type="radio" id="five" value="NPP" v-model="picked" />
-    <label for="five">Conrad Sangme (NPP)</label>
-    <br />
-    <br />
+    <table class="table">
+    <tbody>
+      <tr>
+        <td>
+          <input type="radio" id="one" value="BJP" v-model="picked" />
+        </td>
+        <td>
+          <label for="one">Narendra Modi (BJP)</label>
+        </td>
+        <td>
+          <img src="https://imagesevotingapp.s3-ap-southeast-1.amazonaws.com/bjp.png" width="150" height="150">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="radio" id="two" value="BSP" v-model="picked" />
+        </td>
+        <td>
+          <label for="two">Mayawati (BSP)</label>
+        </td>
+        <td>
+          <img src="https://imagesevotingapp.s3-ap-southeast-1.amazonaws.com/bsp.png" width="150" height="150">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="radio" id="three" value="INC" v-model="picked" />
+        </td>
+        <td>
+          <label for="three">Rahul Gandhi (INC)</label>
+        </td>
+        <td>
+          <img src="https://imagesevotingapp.s3-ap-southeast-1.amazonaws.com/inc.png" width="150" height="150">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="radio" id="four" value="NCP" v-model="picked" />
+        </td>
+        <td>
+          <label for="four">Sharad Pawar (NCP)</label>
+        </td>
+        <td>
+          <img src="https://imagesevotingapp.s3-ap-southeast-1.amazonaws.com/ncp.png" width="150" height="150">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="radio" id="five" value="NPP" v-model="picked" />
+        </td>
+        <td>
+          <label for="five">Conrad Sangme (NPP)</label>
+        </td>
+        <td>
+          <img src="https://imagesevotingapp.s3-ap-southeast-1.amazonaws.com/npp.png" width="150" height="150">
+        </td>
+      </tr>
     <span v-if="picked">
       Picked:
       <b>{{ picked }}</b>
@@ -83,7 +130,7 @@ export default {
     this.input.name = "Name: " + userInfo.firstName + " " + userInfo.lastName
     this.input.voterIDlabel = "Voter ID: " + userInfo.voterId  
     this.input.voterId = userInfo.voterId 
-
+    this.input.img = userInfo.img
     var regData = JSON.parse(localStorage.getItem("registerData"))
     this.input.email = "Email: " + regData.email
     this.input.aadhar = "Aadhar No: " + regData.registrarId
@@ -91,6 +138,9 @@ export default {
 
   },
   methods: {
+    getImgUrl() {
+      return this.input.img.length > 0 ? this.input.img : "https://imagesevotingapp.s3-ap-southeast-1.amazonaws.com/IMG-20190209-WA0007_1549737127299.jpg"
+    },
     async castBallot() {
       await this.runSpinner();
 
