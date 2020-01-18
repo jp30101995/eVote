@@ -197,7 +197,7 @@ export default {
           console.log(apiResponse.data.error);
           this.loginReponse = apiResponse.data.error;
         } else {
-          apiResponse.img = this.imgUrl;
+          apiResponse.data.img = this.imgUrl;
           this.$router.push({name: "CastBallot", params: apiResponse});
         }
 
