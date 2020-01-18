@@ -131,7 +131,8 @@ export default {
       },
       loginReponse: {
         data: ""
-      }
+      },
+      imgUrl: ""
     };
   },
   components: {
@@ -163,6 +164,7 @@ export default {
           if(identity != undefined && identity.firstname == this.registerData.firstName && identity.dlno == this.registerData.voterId){
             console.log(apiResponse);
             this.registerReponse = apiResponse;
+            this.imgUrl = identity.img;
             console.log(apiResponse);
           }else{
             this.registerReponse.data = 'Provided input details are not correct. Please check it and then try again.';
@@ -195,6 +197,7 @@ export default {
           console.log(apiResponse.data.error);
           this.loginReponse = apiResponse.data.error;
         } else {
+          apiResponse.img = this.imgUrl;
           this.$router.push({name: "CastBallot", params: apiResponse});
         }
 
