@@ -81,6 +81,8 @@
           <img src="https://imagesevotingapp.s3-ap-southeast-1.amazonaws.com/npp.png" width="150" height="150">
         </td>
       </tr>
+    </tbody>
+    </table>
     <span v-if="picked">
       Picked:
       <b>{{ picked }}</b>
