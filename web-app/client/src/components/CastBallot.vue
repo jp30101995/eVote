@@ -141,7 +141,7 @@ export default {
   },
   methods: {
     getImgUrl() {
-      return this.input.img.length > 0 ? this.input.img : "https://imagesevotingapp.s3-ap-southeast-1.amazonaws.com/IMG-20190209-WA0007_1549737127299.jpg"
+      return this.input.img != undefined && this.input.img.length > 0 ? this.input.img : "https://imagesevotingapp.s3-ap-southeast-1.amazonaws.com/IMG-20190209-WA0007_1549737127299.jpg"
     },
     async castBallot() {
       await this.runSpinner();
