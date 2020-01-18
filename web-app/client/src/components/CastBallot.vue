@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <img :src="getImgUrl()" width="500" height="333">
+        <img :src="getImgUrl()" width="250" height="250">
       </div>
     </div>
     <hr />
